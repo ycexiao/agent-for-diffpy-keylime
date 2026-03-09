@@ -282,16 +282,18 @@ builder.add_edge(START, "decompose")
 builder.add_edge("decompose", "associate")
 builder.add_edge("associate", "memorize")
 builder.add_edge("memorize", END)
+graph = builder.compile()
 
-folder = Path("complete_scripts")
-files = [f for f in folder.iterdir() if f.is_file() and f.suffix == ".py"]
-for i, f in enumerate(files):
-    input_state = {
-        "messages": [],
-        "units": [],
-        "filepath": str(f),
-        "memory_folder": "memory",
-    }
-    graph = builder.compile()
-    response = graph.invoke(input_state)
-    print(f"{f.name} Finished. {len(files) - i - 1} left")
+if __name__ == "__main__":
+    # folder = Path("complete_scripts")
+    # files = [f for f in folder.iterdir() if f.is_file() and f.suffix == ".py"]
+    # for i, f in enumerate(files):
+    #     input_state = {
+    #         "messages": [],
+    #         "units": [],
+    #         "filepath": str(f),
+    #         "memory_folder": "memory",
+    #     }
+    #     response = graph.invoke(input_state)
+    #     print(f"{f.name} Finished. {len(files) - i - 1} left")
+    pass

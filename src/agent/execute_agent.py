@@ -80,7 +80,7 @@ The default number of iterations is 3 if not specified by the user.
     llm_with_tool = llm.bind_tools(tools=[execute_and_analyze_node])
     messages = [SystemMessage(content=system_prompt)] + state["messages"]
     response = llm_with_tool.invoke(messages)
-    return {"messages": [response]}
+    yield Command(update={"messages": [response]})
 
 
 run_tool = ToolNode(tools=[execute_and_analyze_node])
@@ -96,11 +96,12 @@ builder.add_edge(START, "code_agent")
 graph = builder.compile()
 
 if __name__ == "__main__":
-    input_state = [
-        HumanMessage(
-            content="Here is the code snippet: ```python\nprint(su(range(10)))\n```"
-        )
-    ]
-    response = graph.invoke({"messages": input_state})
-    for msg in response["messages"]:
-        msg.pretty_print()
+    # input_state = [
+    #     HumanMessage(
+    #         content="Here is the code snippet: ```python\nprint(su(range(10)))\n```"
+    #     )
+    # ]
+    # response = graph.invoke({"messages": input_state})
+    # for msg in response["messages"]:
+    #     msg.pretty_print()
+    pass
