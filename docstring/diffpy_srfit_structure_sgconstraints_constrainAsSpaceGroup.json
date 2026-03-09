@@ -1,0 +1,7 @@
+[
+  {
+    "name": "diffpy.srfit.structure.sgconstraints.constrainAsSpaceGroup",
+    "kind": "function",
+    "content": "The `constrainAsSpaceGroup` function from the `diffpy.srfit.structure.sgconstraints` module applies space group constraints to a StructureParSet with P1 symmetry. The parameters include a BaseStructure object, the space group number, symbol or an instance of SpaceGroup class, an optional offset for sg origin, the scatterer ParameterSets to constrain, flags indicating whether to constrain the lattice and ADPs, a list of the ADP names, and a symbol for isotropic ADP. The function returns a SpaceGroupParameters object with the created constraints. The constraints erase any existing constraints or constant flags on the scatterers, lattice or ADPs if they are to be constrained. The lattice constraints are applied differently based on the crystal system."
+  }
+]

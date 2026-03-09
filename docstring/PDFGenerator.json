@@ -1,0 +1,7 @@
+[
+  {
+    "name": "diffpy.srfit.pdf.pdfgenerator.PDFGenerator",
+    "kind": "class",
+    "content": "The PDFGenerator class in the diffpy.srfit.pdf.pdfgenerator module is used to calculate the Pair Distribution Function (PDF) from a single crystal structure. It works with diffpy.structure.Structure, pyobjcryst.crystal.Crystal, and pyobjcryst.molecule.Molecule instances. The class has attributes like _calc (a PDFCalculator instance for calculating the PDF), _phase (the structure ParameterSet used to calculate the profile), and _lastr (the last value of r over which the PDF was calculated).\n\nThe class manages parameters such as scale, delta1, delta2, qbroad, and qdamp. It also manages a ParameterSet named by the user, which is used to calculate the profile. \n\nThe class uses metadata like stype (the scattering type), qmax (the maximum scattering vector), qmin (the minimum scattering vector), and the managed parameters for its operations."
+  }
+]

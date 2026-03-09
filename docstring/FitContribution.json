@@ -1,0 +1,47 @@
+[
+  {
+    "name": "diffpy.srfit.fitbase.fitcontribution.FitContribution",
+    "kind": "class",
+    "content": "The `FitContribution` class in the `diffpy.srfit.fitbase.fitcontribution` module is used to organize an Equation that calculates the signal, and a Profile that holds the signal. It can also use ProfileGenerators and Calculators. Constraints and Restraints can be created as part of a FitContribution.\n\nKey attributes of this class include:\n- `name`: A name for this FitContribution.\n- `profile`: A Profile that holds the measured (and calculated) signal.\n- `_calculators`: A dictionary of Calculators, indexed by name.\n- `_constraints`: A set of constrained Parameters. Constraints can be added using the 'constrain' methods.\n- `_generators`: A dictionary of ProfileGenerators.\n- `_parameters`: An ordered dictionary of parameters.\n- `_restraints`: A set of Restraints. Restraints can be added using the 'restrain' method.\n- `_parsets`: A dictionary of ParameterSets.\n- `_eqfactory`: An instance of `diffpy.srfit.equation.builder.EquationFactory` used to create constraints and restraints from string.\n- `_eq`: The FitContribution equation that will be optimized.\n- `_reseq`: The residual equation.\n- `_xname`: Name of the x-variable.\n- `_yname`: Name of the y-variable.\n- `_dyname`: Name of the dy-variable.\n\nIt also has read-only properties `names` and `values` which represent variable names and values respectively."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitcontribution.FitContribution.setProfile",
+    "kind": "method",
+    "content": "The `setProfile` method in the `FitContribution` class of the `diffpy.srfit.fitbase` module is used to assign a Profile to the FitContribution. \n\nThe method takes three parameters: \n- `profile`: A Profile object that specifies the calculation points and will store the calculated signal.\n- `xname`: The name of the independent variable from the Profile. If not specified, the name provided by the Profile will be used. This variable can be used within string equations.\n- `yname`: The name of the observed Profile. If not specified, the name provided by the Profile will be used. This variable can be used within string equations.\n- `dyname`: The name of the uncertainty in the observed Profile. If not specified, the name provided by the Profile will be used. This variable can be used within string equations."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitcontribution.FitContribution.addProfileGenerator",
+    "kind": "method",
+    "content": "Method: diffpy.srfit.fitbase.fitcontribution.FitContribution.addProfileGenerator\n\nPurpose: This method is used to add a ProfileGenerator to the FitContribution. The ProfileGenerator is assigned a name for use in the profile equation. \n\nUsage: It is called to set the profile equation to call the calculator if there isn't a profile equation already.\n\nInput Parameters:\n1. gen: A ProfileGenerator instance.\n2. name: A name for the calculator. If name is None (default), then the ProfileGenerator's name attribute will be used.\n\nReturn Values: Not provided.\n\nRaises: \n1. ValueError if the ProfileGenerator has no name.\n2. ValueError if the ProfileGenerator has the same name as some other managed object."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitcontribution.FitContribution.setEquation",
+    "kind": "method",
+    "content": "Method: diffpy.srfit.fitbase.fitcontribution.FitContribution.setEquation\n\nPurpose: This method is used to set the profile equation for the FitContribution. The equation will be used when generating the residual for this FitContribution.\n\nUsage: It is used within setResidualEquation as \"eq\", and it takes no arguments.\n\nInput Parameters:\n- eqstr: A string representation of the equation. Any Parameter registered by addParameter or setProfile, or function registered by setCalculator, registerFunction or registerStringFunction can be used in the equation by name. Other names will be turned into Parameters of this FitContribution.\n- ns: A dictionary of Parameters, indexed by name, that are used in the eqstr, but not registered (default {}).\n\nRaises: ValueError if ns uses a name that is already used for a variable."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitcontribution.FitContribution.getEquation",
+    "kind": "method",
+    "content": "The `getEquation` method in the `FitContribution` class of the `diffpy.srfit.fitbase` module is used to retrieve the math expression string for the active profile equation. If the profile equation has not been set yet, it returns an empty string. Otherwise, it returns the normalized math expression."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitcontribution.FitContribution.setResidualEquation",
+    "kind": "method",
+    "content": "The method `setResidualEquation` in the `FitContribution` class from the `diffpy.srfit.fitbase.fitcontribution` module is used to set the residual equation for the FitContribution. The method takes one parameter, `eqstr`, which is a string representation of the residual. If `eqstr` is None, then the previous residual equation will be used, or the chi2 residual will be used if that does not exist. The method raises a SrFitError if the Profile is not yet defined and a ValueError if `eqstr` depends on a Parameter that is not part of the FitContribution."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitcontribution.FitContribution.getResidualEquation",
+    "kind": "method",
+    "content": "The method `getResidualEquation` from the `FitContribution` class in the `diffpy.srfit.fitbase` module is used to retrieve the mathematical expression string for the active residual equation. If the residual equation has not been configured yet, it returns an empty string."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitcontribution.FitContribution.residual",
+    "kind": "method",
+    "content": "Method: diffpy.srfit.fitbase.fitcontribution.FitContribution.residual\n\nPurpose: This method calculates the residual for a given fit contribution. \n\nUsage: It is used within a FitRecipe refinement process, assuming all parameters have been updated to their most current values.\n\nInput Parameters: No explicit input parameters.\n\nReturn Values: Returns the residual, which is an array 'chiv' calculated based on the equation: chiv = (eq() - self.profile.y) / self.profile.dy. The value that is optimized is dot(chiv, chiv).\n\nNote: The residual equation can be modified using the setResidualEquation method."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitcontribution.FitContribution.evaluate",
+    "kind": "method",
+    "content": "The `diffpy.srfit.fitbase.fitcontribution.FitContribution.evaluate` method is used to evaluate the contribution equation and update the `profile.ycalc` attribute. The method does not require any input parameters and does not return any values. It simply updates the `profile.ycalc` attribute based on the evaluation of the contribution equation."
+  }
+]

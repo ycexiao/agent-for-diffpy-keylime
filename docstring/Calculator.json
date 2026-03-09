@@ -1,0 +1,12 @@
+[
+  {
+    "name": "diffpy.srfit.fitbase.calculator.Calculator",
+    "kind": "class",
+    "content": "The `Calculator` class in the `diffpy.srfit.fitbase.calculator` module is a base class for calculators. It organizes parameters and has a `__call__` method that can calculate a generic signal. \n\nKey attributes of this class include `name` (a name for this organizer), `meta` (a dictionary of metadata needed by the calculator), `_calculators` (a managed dictionary of Calculators, indexed by name), `_constraints` (a set of constrained Parameters), `_parameters` (an ordered dictionary of contained Parameters), `_parsets` (a managed dictionary of ParameterSets), `_restraints` (a set of Restraints), and `_eqfactory` (an instance of EquationFactory used to create Equations from string).\n\nIt also has operator attributes like `args` (list of Literal arguments), `nin` (number of inputs), `nout` (number of outputs), `operation` (function that performs the operation), `symbol` (same as name), `_value` (the value of the Operator), and `value` (property for 'getValue').\n\nThe class also has properties `names` (variable names) and `values` (variable values)."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.calculator.Calculator.operation",
+    "kind": "method",
+    "content": "Method: diffpy.srfit.fitbase.calculator.Calculator.operation\n\nPurpose: This method is a decorator indicating abstract properties.\n\nUsage: It is used to define abstract properties in a class. However, it is deprecated and it is recommended to use 'property' with 'abstractmethod' instead.\n\nInput Parameters: Not provided in the docstring.\n\nReturn Values: Not provided in the docstring."
+  }
+]

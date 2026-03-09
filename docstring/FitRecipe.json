@@ -1,0 +1,122 @@
+[
+  {
+    "name": "diffpy.srfit.fitbase.fitrecipe.FitRecipe",
+    "kind": "class",
+    "content": "The `FitRecipe` class in the `diffpy.srfit.fitbase.fitrecipe` module is used for managing the fitting process. It has several attributes:\n\n- `name`: A name for this FitRecipe.\n- `fithooks`: List of FitHook instances for passing information during a refinement.\n- `_constraints`: A dictionary of Constraints, added using the 'constrain' method.\n- `_ocalculators`: An ordered list of the constraints.\n- `_calculators`: A managed dictionary of Calculators.\n- `_contributions`: A managed OrderedDict of FitContributions.\n- `_parameters`: A managed OrderedDict of parameters.\n- `_parsets`: A managed dictionary of ParameterSets.\n- `_eqfactory`: An instance of EquationFactory used to create constraints and restraints.\n- `_restraintlist`: A list of restraints.\n- `_restraints`: A set of Restraints, added using the 'restrain' or 'confine' methods.\n- `_ready`: A flag indicating if all attributes are ready for the calculation.\n- `_tagmanager`: A TagManager instance for managing tags on Parameters.\n- `_weights`: List of weighing factors for each FitContribution.\n- `_fixedtag`: \"__fixed\", used for tagging variables as fixed.\n\nIt also has properties such as `names`, `values`, `fixednames`, `fixedvalues`, `bounds`, and `bounds2` which are read-only and provide variable names, values, fixed refinable variables' names and values, and bounds on parameters respectively."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitrecipe.FitRecipe.pushFitHook",
+    "kind": "method",
+    "content": "The `pushFitHook` method in the `FitRecipe` class of the `diffpy.srfit.fitbase.fitrecipe` module is used to add a `FitHook` to be called within the residual method. This hook is an object for reporting updates or passing information out of the system during a refinement. The method takes two parameters: `fithook`, which is the `FitHook` instance to add to the sequence, and `index`, which is the index for inserting `fithook` into the list of fit hooks. If `index` is None (default), the `fithook` is added to the end."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitrecipe.FitRecipe.popFitHook",
+    "kind": "method",
+    "content": "Method: diffpy.srfit.fitbase.fitrecipe.FitRecipe.popFitHook\n\nPurpose: This method is used to remove a FitHook from the sequence either by its index or by its reference.\n\nUsage: It is used when there is a need to remove a specific FitHook from the sequence.\n\nInput Parameters: \n1. fithook: An instance of FitHook to be removed from the sequence. Defaults to None, in which case the index is used.\n2. index: The index of the FitHook instance to be removed. Defaults to -1.\n\nRaises: \n1. ValueError: If fithook is not None, but is not present in the sequence.\n2. IndexError: If the sequence is empty or the index is out of range."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitrecipe.FitRecipe.getFitHooks",
+    "kind": "method",
+    "content": "The method `getFitHooks` from the `FitRecipe` class in the `diffpy.srfit.fitbase.fitrecipe` module is used to retrieve a sequence of `FitHook` instances. The method does not require any input parameters and returns a sequence of `FitHook` instances."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitrecipe.FitRecipe.clearFitHooks",
+    "kind": "method",
+    "content": "The method `clearFitHooks` in the `FitRecipe` class from the `diffpy.srfit.fitbase.fitrecipe` module is used to clear the FitHook sequence. It does not require any input parameters and does not return any value. Its main purpose is to reset or clear any hooks that have been set in the FitRecipe."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitrecipe.FitRecipe.addContribution",
+    "kind": "method",
+    "content": "The method `addContribution` in the `FitRecipe` class of the `diffpy.srfit.fitbase.fitrecipe` module is used to add a `FitContribution` to the `FitRecipe`. The input parameter is `con`, which is the `FitContribution` to be stored. The method will raise a `ValueError` if the `FitContribution` has no name or if it has the same name as some other managed object."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitrecipe.FitRecipe.setWeight",
+    "kind": "method",
+    "content": "The method `setWeight` in the `FitRecipe` class of the `diffpy.srfit.fitbase.fitrecipe` module is used to set the weight of a `FitContribution`. The input parameters and return values are not provided in the docstring."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitrecipe.FitRecipe.addParameterSet",
+    "kind": "method",
+    "content": "Method: diffpy.srfit.fitbase.fitrecipe.FitRecipe.addParameterSet\n\nPurpose: This method is used to add a ParameterSet to the hierarchy.\n\nUsage: It is used by calling it on an instance of the FitRecipe class and passing the ParameterSet as an argument.\n\nInput Parameters: \n- parset: The ParameterSet to be stored.\n\nRaises: \n- ValueError: If the ParameterSet has no name.\n- ValueError: If the ParameterSet has the same name as some other managed object."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitrecipe.FitRecipe.removeParameterSet",
+    "kind": "method",
+    "content": "The `removeParameterSet` method in the `FitRecipe` class of the `diffpy.srfit.fitbase.fitrecipe` module is used to remove a ParameterSet from the hierarchy. It takes a ParameterSet as an input. If the ParameterSet is not managed by this object, it raises a ValueError."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitrecipe.FitRecipe.residual",
+    "kind": "method",
+    "content": "Method: diffpy.srfit.fitbase.fitrecipe.FitRecipe.residual\n\nPurpose: This method calculates the vector residual to be optimized.\n\nUsage: It is used to calculate the residual based on the current variable values and the '_parameters' list. If no parameters are provided, it assumes that they have been updated elsewhere and skips the update within this function.\n\nInput Parameters: \n- p: A list of current variable values, provided in the same order as the '_parameters' list. If p is an empty iterable, the explicit update within this function is skipped.\n\nReturn Values: The method returns the weighted concatenation of each FitContribution's residual, plus the value of each restraint. The returned array, chiv, satisfies the equation dot(chiv, chiv) = chi^2 + restraints."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitrecipe.FitRecipe.scalarResidual",
+    "kind": "method",
+    "content": "Method: diffpy.srfit.fitbase.fitrecipe.FitRecipe.scalarResidual\n\nPurpose: This method is used to calculate the scalar residual that needs to be optimized.\n\nUsage: It is used by providing a list of current variable values in the same order as the '_parameters' list. If no list is provided (default), it assumes that the parameters have already been updated.\n\nInput Parameters: \n- p: A list of current variable values. If p is empty, the function assumes that the parameters have already been updated.\n\nReturn Values: The method returns a residual, which is the weighted concatenation of each FitContribution's residual, plus the value of each restraint. The returned array, chiv, satisfies the equation dot(chiv, chiv) = chi^2 + restraints."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitrecipe.FitRecipe.addVar",
+    "kind": "method",
+    "content": "Method: FitRecipe.addVar\n\nPurpose: This method is used to add a variable to be refined during a fit.\n\nUsage: It takes in a parameter that will be varied during a fit, an initial value for the variable, a name for the variable, a boolean to fix the variable so it doesn't vary, a tag for the variable, and a list of tags. \n\nInput Parameters: \n- par: A Parameter that will be varied during a fit.\n- value: An initial value for the variable. If this is None (default), then the current value of par will be used.\n- name: A name for this variable. If name is None (default), then the name of the parameter will be used.\n- fixed: Fix the variable so that it does not vary (default False).\n- tag: A tag for the variable. This can be used to retrieve, fix or free variables by tag (default None). Note that a variable is automatically tagged with its name and \"all\".\n- tags: A list of tags (default []). Both tag and tags can be applied.\n\nReturn Values: \n- vars: ParameterProxy (variable) for the passed Parameter.\n\nIt raises ValueError if the name of the variable is already taken by another managed object, if par is constant, or if par is constrained."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitrecipe.FitRecipe.delVar",
+    "kind": "method",
+    "content": "The `delVar` method in the `FitRecipe` class of the `diffpy.srfit.fitbase.fitrecipe` module is used to remove a variable from the FitRecipe. However, it does not modify any constraints or restraints involving the variable. The method takes one parameter, `var`, which is the variable to be removed. If the variable is not part of the FitRecipe, the method raises a ValueError."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitrecipe.FitRecipe.newVar",
+    "kind": "method",
+    "content": "Method: diffpy.srfit.fitbase.fitrecipe.FitRecipe.newVar\n\nPurpose: This method is used to create new variables that are not tied to a Parameter. These variables are typically used in constraint or restraint equations. \n\nUsage: This method is called with the name of the variable, its initial value, whether it is fixed or not, a tag for the variable, and a list of tags.\n\nInput Parameters:\n- name: The name of the variable.\n- value: An initial value for the variable. If this is None, then the variable will be given the value of the first non-None-valued Parameter constrained to it.\n- fixed: A boolean indicating whether the variable is fixed or not.\n- tag: A tag for the variable. A variable is automatically tagged with its name and \"all\".\n- tags: A list of tags.\n\nReturn Value: Returns the new variable, which is an instance of Parameter."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitrecipe.FitRecipe.fix",
+    "kind": "method",
+    "content": "Method: diffpy.srfit.fitbase.fitrecipe.FitRecipe.fix\n\nPurpose: To fix a parameter in the fit recipe so that it is not refined during the fitting process. \n\nUsage: This method is used by passing either a string or variable argument. A special argument \"all\" can be used to select all variables. Keyword arguments should be parameter names, followed by a value to assign to the fixed variable.\n\nInput Parameters: String or variable arguments, or keyword arguments with parameter names and values.\n\nReturn Values: None. \n\nRaises: ValueError if an unknown Parameter, name or tag is passed, or if a tag is passed in a keyword."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitrecipe.FitRecipe.free",
+    "kind": "method",
+    "content": "The `free` method in the `FitRecipe` class of the `diffpy.srfit.fitbase.fitrecipe` module is used to free a parameter by its reference, name, or tag. This means that the parameter is set to be refined. By default, variables are free, and constrained variables are not free. The method accepts either string or variable arguments, and an argument of \"all\" selects all variables. Keyword arguments should be parameter names, followed by a value to assign to the fixed variable. If an unknown Parameter, name or tag is passed, or if a tag is passed in a keyword, the method raises a ValueError."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitrecipe.FitRecipe.isFree",
+    "kind": "method",
+    "content": "The method \"isFree\" in the \"FitRecipe\" class of the \"diffpy.srfit.fitbase.fitrecipe\" module checks whether a variable is not fixed. It does not provide information about its input parameters or return values in the docstring."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitrecipe.FitRecipe.unconstrain",
+    "kind": "method",
+    "content": "The `unconstrain` method in the `FitRecipe` class of the `diffpy.srfit.fitbase.fitrecipe` module is used to remove any constraints on a Parameter. If the Parameter is also a variable of the recipe, it will be freed as well. The method takes one or more Parameters or their names as input. If the Parameter is not constrained, the method will raise a ValueError."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitrecipe.FitRecipe.constrain",
+    "kind": "method",
+    "content": "The `constrain` method in the `FitRecipe` class of the `diffpy.srfit.fitbase.fitrecipe` module is used to apply a constraint to a parameter. The constraint can be an equation or another parameter. The method takes three parameters: `par`, the parameter to be constrained; `con`, a string representation of the constraint equation or a parameter to constrain to; and `ns`, a dictionary of parameters used in the equation but not part of this object. The method will raise a ValueError if the `ns` uses a name already used for a variable, if the equation depends on a parameter not part of the FitRecipe or not defined in `ns`, or if `par` is marked as constant."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitrecipe.FitRecipe.getValues",
+    "kind": "method",
+    "content": "The `getValues` method in the `FitRecipe` class of the `diffpy.srfit.fitbase.fitrecipe` module is used to retrieve the current values of the variables in a list. The method does not require any input parameters and returns a list of the current values of the variables."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitrecipe.FitRecipe.getNames",
+    "kind": "method",
+    "content": "The method `getNames` in the `FitRecipe` class of the `diffpy.srfit.fitbase.fitrecipe` module is used to retrieve the names of the variables. It returns a list of variable names. The method does not require any input parameters."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitrecipe.FitRecipe.getBounds",
+    "kind": "method",
+    "content": "The method `FitRecipe.getBounds` from the `diffpy.srfit.fitbase.fitrecipe` module is used to retrieve the bounds on variables in a list. It returns a list of pairs, each containing a lower bound (lb) and an upper bound (ub)."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitrecipe.FitRecipe.getBounds2",
+    "kind": "method",
+    "content": "The `getBounds2` method in the `FitRecipe` class of the `diffpy.srfit.fitbase.fitrecipe` module is used to retrieve the lower and upper bounds on variables. It returns two lists, one containing the lower bounds and the other containing the upper bounds of the variables."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitrecipe.FitRecipe.boundsToRestraints",
+    "kind": "method",
+    "content": "Method: diffpy.srfit.fitbase.fitrecipe.FitRecipe.boundsToRestraints\n\nPurpose: This method is used to convert all bounded parameters into restraints, where the bounds become limits on the restraint.\n\nUsage: It is used when there is a need to transform bounded parameters into restraints in a FitRecipe object.\n\nInput Parameters:\n1. sig: This represents the uncertainty on the bounds. It can be a scalar or iterable. The default value is 1.\n2. scaled: This parameter is used to scale the restraints.\n\nReturn Values: Not provided in the docstring."
+  }
+]

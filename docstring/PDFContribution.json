@@ -1,0 +1,62 @@
+[
+  {
+    "name": "diffpy.srfit.pdf.pdfcontribution.PDFContribution",
+    "kind": "class",
+    "content": "The `PDFContribution` class from the `diffpy.srfit.pdf.pdfcontribution` module is a FitContribution customized for PDF fits. It allows data and phases to be added directly, and setup of constraints and restraints requires interaction with the generator attributes. \n\nKey attributes include `name` for naming the FitContribution, `profile` for holding the measured signal, `_meta` for recording configuration options, `_calculators` for managing a dictionary of Calculators, `_constraints` for managing constrained Parameters, `_generators` for managing ProfileGenerators, `_parameters` for managing parameters, `_restraints` for managing a set of Restraints, `_parsets` for managing ParameterSets, `_eqfactory` for creating constraints and restraints from string, `_eq` for the FitContribution equation to be optimized, `_reseq` for the residual equation, and `_xname`, `_yname`, and `_dyname` for naming the x, y, and dy variables respectively. \n\nManaged parameters include `scale` for scale factor, `qbroad` for resolution peak broadening term, and `qdamp` for resolution peak dampening term."
+  },
+  {
+    "name": "diffpy.srfit.pdf.pdfcontribution.PDFContribution.loadData",
+    "kind": "method",
+    "content": "Method: PDFContribution.loadData\n\nPurpose: This method is used to load data in various formats using the PDFParser and then pass it to the built-in profile with loadParsedData.\n\nUsage: It is used when there is a need to load data for PDF contribution.\n\nInput Parameters: The method takes 'data' as an input parameter. 'Data' can be an open file-like object, name of a file that contains data, or a string containing the data.\n\nReturn Values: Not provided in the docstring."
+  },
+  {
+    "name": "diffpy.srfit.pdf.pdfcontribution.PDFContribution.setCalculationRange",
+    "kind": "method",
+    "content": "Method: PDFContribution.setCalculationRange\n\nPurpose: This method is used to set the epsilon-inclusive calculation range. It adheres to the observed 'xobs' points when 'dx' is the same as in the data. The 'xmin' and 'xmax' parameters are clipped at the bounds of the observed data.\n\nUsage: This method is used by passing in optional parameters 'xmin', 'xmax', and 'dx'. \n\nInput Parameters:\n- 'xmin': A float or \"obs\". It represents the minimum value of the independent variable. If not specified, the current minimum is kept. If specified as \"obs\", it resets to the minimum observed value.\n- 'xmax': A float or \"obs\". It represents the maximum value of the independent variable. If not specified, the current maximum is kept. If specified as \"obs\", it resets to the maximum observed value.\n- 'dx': A float or \"obs\". It represents the sample spacing in the independent variable. When different from the data, resample the 'x' as anchored at 'xmin'.\n\nReturn Values: This method does not return any value but raises AttributeError if there is no observed data and ValueError when 'xmin' > 'xmax' or if 'dx' <= 0 or if 'dx' > 'xmax' - 'xmin'."
+  },
+  {
+    "name": "diffpy.srfit.pdf.pdfcontribution.PDFContribution.savetxt",
+    "kind": "method",
+    "content": "The `savetxt` method in the `PDFContribution` class of the `diffpy.srfit.pdf.pdfcontribution` module is used to call the `numpy.savetxt` function with parameters `x`, `ycalc`, `y`, and `dy`. This method relies on the built-in Profile. All arguments are passed directly to `numpy.savetxt`."
+  },
+  {
+    "name": "diffpy.srfit.pdf.pdfcontribution.PDFContribution.addStructure",
+    "kind": "method",
+    "content": "Method: diffpy.srfit.pdf.pdfcontribution.PDFContribution.addStructure\n\nPurpose: This method is used to add a phase that goes into the PDF calculation.\n\nUsage: It is used by passing a name to the generator that will manage the PDF calculation from the passed structure. The adapted structure will be accessible via the name \"phase\" as an attribute of the generator.\n\nInput Parameters:\n- name: A name to give the generator that will manage the PDF calculation from the passed structure.\n- stru: An instance of diffpy.structure.Structure, pyobjcryst.crystal.Crystal or pyobjcryst.molecule.Molecule. Default is None.\n- periodic: A boolean indicating whether the structure should be treated as periodic. Default is True.\n\nReturn Value: Returns the new phase (ParameterSet appropriate for what was passed in stru)."
+  },
+  {
+    "name": "diffpy.srfit.pdf.pdfcontribution.PDFContribution.addPhase",
+    "kind": "method",
+    "content": "The `addPhase` method in the `PDFContribution` class of the `diffpy.srfit.pdf.pdfcontribution` module is used to add a phase to the PDF calculation. It takes three parameters: `name`, `parset`, and `periodic`. \n\n- `name` is the name given to the generator that will manage the PDF calculation from the passed parameter phase. \n- `parset` is a `SrRealParSet` that holds the structural information and can be used to share the phase between multiple `BasePDFGenerators`.\n- `periodic` is a boolean that indicates whether the structure should be treated as periodic. If true, a `PDFGenerator` will be used to calculate the PDF from the phase, otherwise, a `DebyePDFGenerator` will be used.\n\nThe method returns the new phase which is a `ParameterSet` appropriate for what was passed in `stru`."
+  },
+  {
+    "name": "diffpy.srfit.pdf.pdfcontribution.PDFContribution.setScatteringType",
+    "kind": "method",
+    "content": "The method `setScatteringType` in the `PDFContribution` class of the `diffpy.srfit.pdf` module is used to set the type of scattering. It accepts a single input parameter, `type`, which can be either \"X\" for x-ray or \"N\" for neutron. If the provided type is not either \"X\" or \"N\", it raises a ValueError."
+  },
+  {
+    "name": "diffpy.srfit.pdf.pdfcontribution.PDFContribution.getScatteringType",
+    "kind": "method",
+    "content": "The `getScatteringType` method in the `PDFContribution` class from the `diffpy.srfit.pdf.pdfcontribution` module is used to retrieve the scattering type. The scattering type can be set using the `setScatteringType` method. The method does not require any input parameters and returns the current scattering type."
+  },
+  {
+    "name": "diffpy.srfit.pdf.pdfcontribution.PDFContribution.setQmax",
+    "kind": "method",
+    "content": "The method `setQmax` in the `PDFContribution` class of the `diffpy.srfit.pdf` module is used to set the maximum q-value. The method does not specify any input parameters or return values in its docstring."
+  },
+  {
+    "name": "diffpy.srfit.pdf.pdfcontribution.PDFContribution.getQmax",
+    "kind": "method",
+    "content": "The method 'getQmax' in the 'PDFContribution' class of the 'diffpy.srfit.pdf' module is used to retrieve the maximum q-value. The method does not require any input parameters and returns the maximum q-value."
+  },
+  {
+    "name": "diffpy.srfit.pdf.pdfcontribution.PDFContribution.setQmin",
+    "kind": "method",
+    "content": "The method \"setQmin\" in the class \"PDFContribution\" of the module \"diffpy.srfit.pdf.pdfcontribution\" is used to set the minimum value of q. The usage of this method is not provided in the docstring. The input parameter is likely the desired minimum q value, but this is not specified in the docstring. The return value is also not provided in the docstring."
+  },
+  {
+    "name": "diffpy.srfit.pdf.pdfcontribution.PDFContribution.getQmin",
+    "kind": "method",
+    "content": "The method 'getQmin' in the 'PDFContribution' class of the 'diffpy.srfit.pdf' module is used to retrieve the minimum 'q' value. The method does not require any input parameters and returns the minimum 'q' value."
+  }
+]

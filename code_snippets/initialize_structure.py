@@ -12,18 +12,30 @@ This script provides:
 variables as the output.
 """
 
+# ===========================
 # imports
+# ===========================
 from diffpy.structure.parsers import getParser
 from pathlib import Path
 from diffpy.srfit.pdf import PDFGenerator
 import numpy
 import warnings
 
-# Input parameters
+# ===========================
+# input parameters
+# ===========================
 run_parallel = True
 structure_path = Path("data/Ni.cif").resolve()
 
+# ===========================
+# Output parameters
+# ===========================
+spacegroup = None
+pdfgenerator = None
+
+# ===========================
 # script body
+# ===========================
 if run_parallel:
     try:
         import multiprocessing
@@ -42,15 +54,11 @@ if run_parallel:
             "parallelization. Proceeding without parallelization."
         )
         run_parallel = False
-spacegroups = []
-pdfgenerators = []
 stru_parser = getParser("cif")
 structure = stru_parser.parse(structure_path.read_text())
 sg = getattr(stru_parser, "spacegroup", None)
 spacegroup = sg.short_name if sg is not None else "P1"
-spacegroups.append(spacegroup)
 pdfgenerator = PDFGenerator(f"G1")
 pdfgenerator.setStructure(structure)
 if run_parallel:
     pdfgenerator.parallel(ncpu=ncpu, mapfunc=pool.map)
-pdfgenerators.append(pdfgenerator)

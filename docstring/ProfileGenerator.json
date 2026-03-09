@@ -1,0 +1,22 @@
+[
+  {
+    "name": "diffpy.srfit.fitbase.profilegenerator.ProfileGenerator",
+    "kind": "class",
+    "content": "The `ProfileGenerator` class in the `diffpy.srfit.fitbase.profilegenerator` module is a base class for profile generators. It organizes parameters and can generate a profile using its `__call__` method. It can also be used directly in an evaluation network as it is an Operator.\n\nKey attributes of this class include `name`, `profile`, `meta`, `eq`, `_calculators`, `constraints`, `_parameters`, `_parsets`, `_restraints`, and `_eqfactory`. The `name` is a name for the organizer, `profile` is a Profile instance that contains the calculation range and will contain the generated profile, `meta` is a dictionary of metadata needed by the generator, and `eq` is the Equation object used to wrap this ProfileGenerator. The `_calculators` is a managed dictionary of Calculators, indexed by name, `constraints` is a set of constrained Parameters, `_parameters` is a managed OrderedDict of contained Parameters, `_parsets` is a managed dictionary of ParameterSets, `_restraints` is a set of Restraints, and `_eqfactory` is a diffpy.srfit.equation.builder.EquationFactory instance that is used create Equations from string.\n\nIt also has operator attributes like `args`, `name`, `nin`, `nout`, `operation`, `symbol`, `_value`, and `value`.\n\nThe class has two properties: `names` which returns variable names and `values` which returns variable values."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.profilegenerator.ProfileGenerator.operation",
+    "kind": "method",
+    "content": "The `ProfileGenerator.operation` method in the `diffpy.srfit.fitbase.profilegenerator` module is used to evaluate a profile. It does this by calling the `__call__` method on the `profile.x` object. The method does not take any input parameters. The return value is the result of the `__call__` operation on `profile.x`."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.profilegenerator.ProfileGenerator.setProfile",
+    "kind": "method",
+    "content": "The `setProfile` method in the `ProfileGenerator` class of the `diffpy.srfit.fitbase.profilegenerator` module is used to assign a profile. The method takes one input parameter, `profile`, which is a Profile object that specifies the calculation points and stores the calculated signal."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.profilegenerator.ProfileGenerator.processMetaData",
+    "kind": "method",
+    "content": "Method: diffpy.srfit.fitbase.profilegenerator.ProfileGenerator.processMetaData\n\nPurpose: This method is used to process metadata and configure a ProfileGenerator whenever the Profile is set.\n\nUsage: It is called automatically when there is a change in the Profile.\n\nInput Parameters: Not provided in the docstring.\n\nReturn Values: Not provided in the docstring."
+  }
+]

@@ -13,36 +13,43 @@ This script provides:
 variables as the output.
 """
 
+# ===========================
 # imports
+# ===========================
 from diffpy.srfit.fitbase import FitRecipe
 from diffpy.srfit.fitbase.constrainer import constrainAsSpaceGroup
 import warnings
 
-# Input parameters
+# ===========================
+# input parameters
+# ===========================
 contribution = None
-pdfgenerators = [
-    None,
-]
-spacegroups = [
-    "",
-]
+pdfgenerator = None
+spacegroup = None
 parameter_values_dictionary = {}
 
+# ===========================
+# output parameters
+# ===========================
+recipe = None
+
+# ===========================
 # script body
+# ===========================
 recipe = FitRecipe()
 recipe.addContribution(contribution)
-delta1 = getattr(pdfgenerators[0], "delta1")
-delta2 = getattr(pdfgenerators[0], "delta2")
+delta1 = getattr(pdfgenerator, "delta1")
+delta2 = getattr(pdfgenerator, "delta2")
 s0 = getattr(contribution, "s0")
-qdamp = getattr(pdfgenerators[0], "qdamp")
-qbroad = getattr(pdfgenerators[0], "qbroad")
+qdamp = getattr(pdfgenerator, "qdamp")
+qbroad = getattr(pdfgenerator, "qbroad")
 recipe.addVar(delta1, name="delta1", fixed=False)
 recipe.addVar(delta2, name="delta2", fixed=False)
 recipe.addVar(s0, name="s0", fixed=False)
 recipe.addVar(qdamp, name="qdamp", fixed=False)
 recipe.addVar(qbroad, name="qbroad", fixed=False)
-structure_parset = pdfgenerators[0].phase
-spacegroupparams = constrainAsSpaceGroup(structure_parset, spacegroups[0])
+structure_parset = pdfgenerator.phase
+spacegroupparams = constrainAsSpaceGroup(structure_parset, spacegroup)
 for par in spacegroupparams.latpars:
     recipe.addVar(par, name=par.name, fixed=False)
 for par in spacegroupparams.xyzpars:

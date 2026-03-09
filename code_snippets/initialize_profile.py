@@ -11,12 +11,16 @@ This script provides:
 variables as the output.
 """
 
+# ===========================
 # imports
+# ===========================
 from diffpy.srfit.fitbase import Profile
 from diffpy.srfit.pdf import PDFParser
 from pathlib import Path
 
-# Input parameters
+# ===========================
+# input parameters
+# ===========================
 profile_path = Path("data/Ni.gr").resolve()
 qmax = None
 qmin = None
@@ -24,7 +28,9 @@ xmin = None
 xmax = None
 dx = None
 
+# ===========================
 # script body
+# ===========================
 profile = Profile()
 parser = PDFParser()
 parser.parseString(Path(profile_path).read_text())

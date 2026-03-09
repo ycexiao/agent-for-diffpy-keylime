@@ -1,0 +1,17 @@
+[
+  {
+    "name": "diffpy.srfit.fitbase.fithook.PlotFitHook",
+    "kind": "class",
+    "content": "The `diffpy.srfit.fitbase.fithook.PlotFitHook` class in Python is used for live plotting of any element that is currently being refined. The class doesn't provide any specific methods or attributes in its docstring."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fithook.PlotFitHook.reset",
+    "kind": "method",
+    "content": "The method \"reset\" in the class \"PlotFitHook\" from the module \"diffpy.srfit.fitbase.fithook\" is used to initialize or reinitialize the plot. The method does not require any input parameters and does not return any values."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fithook.PlotFitHook.postcall",
+    "kind": "method",
+    "content": "The `postcall` method in the `PlotFitHook` class of the `diffpy.srfit.fitbase.fithook` module is used within the `FitRecipe.residual` method, after the calculation. Its purpose is to find data and plot it. The method uses two attributes: `recipe`, which is an instance of `FitRecipe`, and `chiv`, which represents the residual vector."
+  }
+]

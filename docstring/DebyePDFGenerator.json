@@ -1,0 +1,17 @@
+[
+  {
+    "name": "diffpy.srfit.pdf.debyepdfgenerator.DebyePDFGenerator",
+    "kind": "class",
+    "content": "The `DebyePDFGenerator` class in the `diffpy.srfit.pdf.debyepdfgenerator` module is used to calculate the Pair Distribution Function (PDF) from an isolated scatterer. It works with `diffpy.structure.Structure`, `pyobjcryst.crystal.Crystal`, and `pyobjcryst.molecule.Molecule` instances. The class has attributes like `_calc`, `_phase`, `stru`, and `_lastr` which are used in the calculation of the PDF. The class manages parameters like `scale`, `delta1`, `delta2`, `qbroad`, and `qdamp` which are used in the calculation. The class also manages a `ParameterSet` which is a `SrRealStructure` instance used to calculate the profile. The class uses metadata like `stype`, `qmax`, `qmin`, `scale`, `delta1`, `delta2`, `qbroad`, and `qdamp`."
+  },
+  {
+    "name": "diffpy.srfit.pdf.debyepdfgenerator.DebyePDFGenerator.setStructure",
+    "kind": "method",
+    "content": "Method: DebyePDFGenerator.setStructure\n\nPurpose: This method is used to set the structure that will be used to calculate the PDF. It creates a ParameterSet that adapts the given structure to a ParameterSet interface. The resulting ParameterSet will be managed by this generator.\n\nUsage: It is used to set the structure for PDF calculation.\n\nInput Parameters:\n1. stru: An instance of diffpy.structure.Structure, pyobjcryst.crystal.Crystal, or pyobjcryst.molecule.Molecule. Default is None.\n2. name: A name to give to the managed ParameterSet that adapts stru. Default is \"phase\".\n3. periodic: A boolean indicating if the structure should be treated as periodic. Default is False. Note that some structures do not support periodicity, in which case this will have no effect on the PDF calculation.\n\nReturn Values: Not provided in the docstring."
+  },
+  {
+    "name": "diffpy.srfit.pdf.debyepdfgenerator.DebyePDFGenerator.setPhase",
+    "kind": "method",
+    "content": "Method: diffpy.srfit.pdf.debyepdfgenerator.DebyePDFGenerator.setPhase\n\nPurpose: This method is used to set the phase that will be used to calculate the PDF.\n\nUsage: It sets the phase directly with a DiffpyStructureParSet, ObjCrystCrystalParSet or ObjCrystMoleculeParSet that adapts a structure object (from diffpy or pyobjcryst). The passed ParameterSet will be managed by this generator.\n\nInput Parameters: \n- parset: A SrRealParSet that holds the structural information. This can be used to share the phase between multiple BasePDFGenerators, and have the changes in one reflect in another.\n- periodic: A boolean indicating if the structure should be treated as periodic (default is True). Note that some structures do not support periodicity, in which case this will be ignored.\n\nReturn Values: Not provided in the docstring."
+  }
+]

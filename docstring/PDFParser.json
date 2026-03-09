@@ -1,0 +1,12 @@
+[
+  {
+    "name": "diffpy.srfit.pdf.pdfparser.PDFParser",
+    "kind": "class",
+    "content": "The `PDFParser` class from the `diffpy.srfit.pdf.pdfparser` module is used to hold a diffraction pattern. It has attributes to store the data format (`_format`), data from each bank (`_banks`), independent variable (`_x`), profile (`_y`), uncertainty in independent variable (`_dx`), uncertainty in profile (`_dy`), and metadata (`_meta`) from the chosen bank. \n\nThe metadata includes general information like the filename, number of banks, and chosen bank number. It can also include specific data such as scattering type, minimum and maximum scattering vector, resolution damping and broadening factor, nanoparticle diameter, data scale, temperature, and doping."
+  },
+  {
+    "name": "diffpy.srfit.pdf.pdfparser.PDFParser.parseString",
+    "kind": "method",
+    "content": "The `parseString` method in the `PDFParser` class of the `diffpy.srfit.pdf.pdfparser` module is used to parse a string and set the `_x`, `_y`, `_dx`, `_dy` and `_meta` variables. If `_dx` or `_dy` cannot be obtained from the data format, they are set to 0. The method takes a single input parameter, `patstring`, which is the string containing the pattern. The method will erase the currently loaded data and selected bank number. If the string cannot be parsed, it raises a `ParseError`."
+  }
+]

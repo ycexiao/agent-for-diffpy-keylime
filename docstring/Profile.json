@@ -1,0 +1,37 @@
+[
+  {
+    "name": "diffpy.srfit.fitbase.profile.Profile",
+    "kind": "class",
+    "content": "The `Profile` class in the `diffpy.srfit.fitbase.profile` module is a container for observed and calculated profiles. It is an Observable object, meaning it can observe the changes in its attributes and can be observed by other objects. \n\nKey attributes of this class include:\n- `_xobs`, `xobs`: A numpy array of the observed independent variable.\n- `_yobs`, `yobs`: A numpy array of the observed signal.\n- `_dyobs`, `dyobs`: A numpy array of the uncertainty of the observed signal.\n- `x`, `y`, `dy`: Numpy arrays of the calculated independent variable, profile over the calculation range, and uncertainty in the profile over the calculation range, respectively.\n- `ycalc`: A numpy array of the calculated signal.\n- `xpar`, `ypar`, `dypar`, `ycpar`: Parameters that store `x`, `y`, `dy`, and `ycalc`, respectively.\n- `meta`: A dictionary of metadata, set if provided by a parser."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.profile.Profile.loadParsedData",
+    "kind": "method",
+    "content": "The `loadParsedData` method in the `Profile` class of the `diffpy.srfit.fitbase.profile` module is used to load parsed data from a `ProfileParser`. It sets the `xobs`, `yobs`, `dyobs` arrays and the metadata. The method doesn't specify input parameters and return values in the docstring."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.profile.Profile.setObservedProfile",
+    "kind": "method",
+    "content": "The `setObservedProfile` method in the `Profile` class of the `diffpy.srfit.fitbase.profile` module is used to set the observed profile. It takes three parameters: `xobs`, `yobs`, and `dyobs`. `xobs` and `yobs` are numpy arrays representing the independent variable and the observed signal respectively. `dyobs` is a numpy array representing the uncertainty in the observed signal, and it defaults to 1 at each observed `xobs` if not provided. The method raises a ValueError if the lengths of `yobs` and `xobs` are not equal, or if `dyobs` is provided and its length is not equal to the length of `xobs`."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.profile.Profile.setCalculationRange",
+    "kind": "method",
+    "content": "Method: diffpy.srfit.fitbase.profile.Profile.setCalculationRange\n\nPurpose: This method is used to set the epsilon-inclusive calculation range, adhering to the observed 'xobs' points when 'dx' is the same as in the data. The 'xmin' and 'xmax' are clipped at the bounds of the observed data.\n\nUsage: It is used to set the calculation range for the independent variable in a profile.\n\nInput Parameters:\n1. xmin (float or \"obs\", optional): The minimum value of the independent variable. If specified as \"obs\", it resets to the minimum observed value.\n2. xmax (float or \"obs\", optional): The maximum value of the independent variable. If specified as \"obs\", it resets to the maximum observed value.\n3. dx (float or \"obs\", optional): The sample spacing in the independent variable. When different from the data, it resamples the 'x' as anchored at 'xmin'.\n\nReturn Values: None. \n\nExceptions: \n1. AttributeError: Raised if there is no observed data.\n2. ValueError: Raised when xmin > xmax or if dx <= 0, or if dx > xmax - xmin."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.profile.Profile.setCalculationPoints",
+    "kind": "method",
+    "content": "The method `setCalculationPoints` in the `Profile` class of the `diffpy.srfit.fitbase.profile` module is used to set the calculation points. It takes a non-empty numpy array `x` as an input parameter. If `xobs` exists, the bounds of `x` will be limited to its bounds. If `xobs`, `yobs` and `dyobs` exist, this method will create `y` and `dy` on the specified grid."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.profile.Profile.loadtxt",
+    "kind": "method",
+    "content": "Method: diffpy.srfit.fitbase.profile.Profile.loadtxt\n\nPurpose: This method is used to load data using numpy.loadtxt. \n\nUsage: The arguments are passed to numpy.loadtxt with unpack = True enforced. The first two arrays returned are assumed to be x and y. If there is a third array, it is assumed to be dy. Any other arrays are ignored and passed to setObservedProfile. \n\nInput Parameters: Arguments that are passed to numpy.loadtxt.\n\nRaises: ValueError if the call to numpy.loadtxt returns fewer than 2 arrays.\n\nReturn Values: \n- x: x array loaded from the file.\n- y: y array loaded from the file.\n- dy: dy array loaded from the file."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.profile.Profile.savetxt",
+    "kind": "method",
+    "content": "Method: diffpy.srfit.fitbase.profile.Profile.savetxt\n\nPurpose: This method is used to call `numpy.savetxt` with parameters x, ycalc, y, dy.\n\nUsage: It is used by passing a filename or file handle as 'fname' and other keyword arguments that are passed to `numpy.savetxt`. The file header is preset to \"x  ycalc  y  dy\". To save data without any header, use ``header=''``.\n\nInput Parameters: \n- fname: A filename or file handle. This is passed to `numpy.savetxt`.\n- **kwargs: The keyword arguments that are passed to `numpy.savetxt`.\n\nRaises: \n- SrFitError: This error is raised when `self.ycalc` has not been set.\n\nSee also: numpy.savetxt"
+  }
+]

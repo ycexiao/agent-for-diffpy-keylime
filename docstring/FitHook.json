@@ -1,0 +1,22 @@
+[
+  {
+    "name": "diffpy.srfit.fitbase.fithook.FitHook",
+    "kind": "class",
+    "content": "The `FitHook` class in the `diffpy.srfit.fitbase.fithook` module is used to monitor the progress of a `FitRecipe` refinement. It can be used as a fithook for the `FitRecipe` class. The methods in this class are called during the preparation of the `FitRecipe` for refinement and during the residual call."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fithook.FitHook.reset",
+    "kind": "method",
+    "content": "The `reset` method in the `FitHook` class of the `diffpy.srfit.fitbase.fithook` module is used to reset the hook data. It is called whenever the `_prepare` method of the `FitRecipe` class is invoked. This usually happens when there's a change in the fit hierarchy, such as adding a new `ParameterSet`, constraint, or restraint."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fithook.FitHook.precall",
+    "kind": "method",
+    "content": "The `FitHook.precall` method in the `diffpy.srfit.fitbase.fithook` module is used within the `FitRecipe.residual` method, before the calculation process. It has an attribute 'recipe' which is an instance of the `FitRecipe` class."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fithook.FitHook.postcall",
+    "kind": "method",
+    "content": "The `postcall` method in the `FitHook` class of `diffpy.srfit.fitbase.fithook` is used after the calculation within `FitRecipe.residual`. It has two attributes: `recipe`, which is the instance of `FitRecipe`, and `chiv`, which represents the residual vector."
+  }
+]

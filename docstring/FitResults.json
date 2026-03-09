@@ -1,0 +1,27 @@
+[
+  {
+    "name": "diffpy.srfit.fitbase.fitresults.FitResults",
+    "kind": "class",
+    "content": "The `FitResults` class in the `diffpy.srfit.fitbase.fitresults` module is used for processing, presenting, and storing the results of a fit. It has attributes such as `recipe` which contains the results, `cov` for the covariance matrix, `conresults` for an ordered dictionary of ContributionResults, `derivstep` for the fractional step size for calculating numeric derivatives, and `varnames`, `varvals`, `varunc` for the names, values, and uncertainties of the variables in the recipe respectively. It also has attributes for fixed variables, constraint values, scalar residual, penalty to residual, chi2, cumulative chi2, reduced chi2, Rw, cumulative Rw, messages about the results, and the precision of numeric output. The `_dcon` attribute is used internally for the derivatives of the constraint equations with respect to the variables. All these attributes, except the recipe, are created or updated when the `update` method is called."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitresults.FitResults.update",
+    "kind": "method",
+    "content": "The `FitResults.update` method in the `diffpy.srfit.fitbase.fitresults` module is used to update the results based on the current state of the recipe. The method does not specify any input parameters or return values in the docstring."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitresults.FitResults.formatResults",
+    "kind": "method",
+    "content": "Method: diffpy.srfit.fitbase.fitresults.FitResults.formatResults\n\nPurpose: This method is used to format the results of a fit and return them as a string. It is used by the printResults and saveResults methods.\n\nUsage: It can be used to customize the output of the fit results by overloading the formatting.\n\nInput Parameters:\n- header: A string to add to the beginning of the output (default is an empty string).\n- footer: A string to add to the end of the output (default is an empty string).\n- update: A boolean flag indicating whether to call the update() method (default is False).\n\nReturn Value: \n- out: A string containing the formatted fit results."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitresults.FitResults.printResults",
+    "kind": "method",
+    "content": "The `printResults` method in the `FitResults` class of the `diffpy.srfit.fitbase.fitresults` module is used to format and print the results. It accepts three parameters: `header` to add a header to the output (default is an empty string), `footer` to add a footer to the output (default is an empty string), and `update` which is a flag indicating whether to call the `update()` method (default is False)."
+  },
+  {
+    "name": "diffpy.srfit.fitbase.fitresults.FitResults.saveResults",
+    "kind": "method",
+    "content": "The `saveResults` method in the `FitResults` class of the `diffpy.srfit.fitbase.fitresults` module is used to format and save the results. It takes four parameters: `filename` which is the name of the file to save the results, `header` and `footer` which are optional and can be added to the output, and `update` which is a flag indicating whether to call the update method. The default values for `header`, `footer`, and `update` are an empty string and False respectively."
+  }
+]
